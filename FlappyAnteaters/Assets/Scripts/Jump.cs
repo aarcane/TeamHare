@@ -18,7 +18,7 @@ public class Jump : MonoBehaviour
 
 		// The force which is added when the player jumps
 		// This can be changed in the Inspector window
-		public Vector2 jumpForce = new Vector2 (0, 300);
+		public Vector2 jumpForce = new Vector2 (0, 600);
 	
 		// Update is called once per frame
 		void Update ()
@@ -112,7 +112,6 @@ public class Jump : MonoBehaviour
 
 		void OnTriggerEnter2D (Collider2D other)
 		{
-				Debug.Log ("COLIDED IN JUMP");
 				if (other.gameObject.tag == "CheapAssRockets") {
 						
 						itemDuration = 700;
