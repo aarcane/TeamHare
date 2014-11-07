@@ -20,7 +20,7 @@ public class Jump : MonoBehaviour
 
 		// The force which is added when the player jumps
 		// This can be changed in the Inspector window
-		public Vector2 jumpForce = new Vector2 (0, 600);
+		public Vector2 jumpForce = new Vector2 (0, 900);
 	
 		// Update is called once per frame
 		void Update ()
