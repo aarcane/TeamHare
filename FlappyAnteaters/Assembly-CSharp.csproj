@@ -48,11 +48,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletScript.cs" />
      <Compile Include="Assets\Scripts\CheapAssRocketsScript.cs" />
+     <Compile Include="Assets\Scripts\FogDistraction.cs" />
      <Compile Include="Assets\Scripts\GeneratePipes.cs" />
      <Compile Include="Assets\Scripts\Jump.cs" />
      <Compile Include="Assets\Scripts\PipeObstacle.cs" />
      <Compile Include="Assets\Scripts\SpreadRocket.cs" />
      <Compile Include="Assets\Scripts\SpreadRocketItem.cs" />
+     <Compile Include="Assets\Scripts\SurpriseItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

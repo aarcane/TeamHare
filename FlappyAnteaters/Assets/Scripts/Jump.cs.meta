@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: c6fcfe828f785409db9dc728860edb3e
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fog: {instanceID: 0}
+  - shotPrefab: {instanceID: 0}
+  - spreadRocketPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

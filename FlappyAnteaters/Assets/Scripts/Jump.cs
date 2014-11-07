@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Jump : MonoBehaviour
 {
+	
+		public GameObject fog;
 		//Decrease score by 50
 		public bool HitCheapAssRockets = false;
 		public bool hasSpreadRocket = false;
@@ -25,7 +27,14 @@ public class Jump : MonoBehaviour
 		{
 				score++;
 				
-
+				if (score >= 2000) {
+						if (Application.loadedLevelName == "Sharky and Trees") {
+								Application.LoadLevel ("Level 2");
+						} else if (Application.loadedLevelName == "Level 2") {
+								Application.LoadLevel ("Level 3");
+						}
+				}
+				
 				if (HitCheapAssRockets) {
 
 
@@ -121,6 +130,10 @@ public class Jump : MonoBehaviour
 
 						hasSpreadRocket = true;
 						itemDuration = 700;
+						Destroy (other.gameObject);
+				} else if (other.gameObject.tag == "SurpriseItem") {
+
+						Instantiate (fog);
 						Destroy (other.gameObject);
 				}
 		}

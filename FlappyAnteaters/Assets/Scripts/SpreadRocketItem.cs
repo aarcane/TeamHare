@@ -15,5 +15,4 @@ public class SpreadRocketItem : MonoBehaviour {
 		transform.position = new Vector3 (transform.position.x, transform.position.y - rangeY * Random.value, transform.position.z);
 	}
 
-
 }
