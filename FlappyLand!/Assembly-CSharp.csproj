@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\FogDistraction.cs" />
      <Compile Include="Assets\Scripts\GeneratePipes.cs" />
      <Compile Include="Assets\Scripts\Jump.cs" />
+     <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\MenuMain.cs" />
      <Compile Include="Assets\Scripts\MenuPause.cs" />
      <Compile Include="Assets\Scripts\PipeObstacle.cs" />

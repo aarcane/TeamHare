@@ -24,8 +24,10 @@ public class Jump : MonoBehaviour
 	
 		// Update is called once per frame
 		void Update ()
-		{
-				score++;
+		{	if (Time.timeScale == 0f)
+				return;	
+				
+			score++;
 				
 				if (score >= 2000) {
 						if (Application.loadedLevelName == "Sharky and Trees") {
