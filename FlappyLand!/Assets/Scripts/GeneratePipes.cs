@@ -14,8 +14,6 @@ public class GeneratePipes : MonoBehaviour
 		{
 				InvokeRepeating ("CreateObstacle", 1f, 4f);
 				InvokeRepeating("CreateRandomItem", 1f, 6f);
-				//	InvokeRepeating ("CreateSpreadRocketItem", 1f, 4f); 
-				//	InvokeRepeating ("CreateSpurpriseItem", 1f, 6f); 
 		}
 
 		void CreateRandomItem ()
@@ -52,7 +50,7 @@ public class GeneratePipes : MonoBehaviour
 
 		void CreateSpurpriseItem ()
 		{
-				spreadRocket.tag = "SurpriseItem";
+				surpriseItem.tag = "SurpriseItem";
 				Instantiate (surpriseItem);
 		}
 }

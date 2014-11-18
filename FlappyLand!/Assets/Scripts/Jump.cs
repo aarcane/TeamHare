@@ -3,15 +3,28 @@ using System.Collections;
 
 public class Jump : MonoBehaviour
 {
-	
 		public GameObject fog;
+		public GameObject TrojanHorseBoss;
+		public GameObject TrojanBoss;
+		public GameObject BullDogBoss;
+		public GameObject SlugBoss;
+		public GameObject TritonBoss;
+		public GameObject TreeBoss;
+		public GameObject SlugBossShields;
+
+		//Boss Killed Will be set here 
+		public int bossHealth = 10;
+		public int horseHealth = 1500;
+		public int slugShieldHealth = 1000;
+		public bool BossSpawned = false;
+		public bool trojanHorseDead = false;
 		//Decrease score by 50
 		public bool HitCheapAssRockets = false;
 		public bool hasSpreadRocket = false;
 		public int itemDuration = 700;
 	
 		//score shown on GUI
-		int score = 0;
+		public int score = 0;
 
 		//The "bullet" object that is referenced in the code
 		public Transform shotPrefab;
@@ -24,14 +37,67 @@ public class Jump : MonoBehaviour
 	
 		// Update is called once per frame
 		void Update ()
-		{
+		{		
+				Debug.Log (bossHealth);
 				score++;
 				
 				if (score >= 2000) {
+						
+						if (Application.loadedLevelName == "Sharky and Trees") {
+								if (!BossSpawned) {
+										Instantiate (SlugBoss);
+										Instantiate (SlugBossShields);
+										bossHealth = 2000;
+										BossSpawned = true;
+								}
+						} else if (Application.loadedLevelName == "Level 3") {
+								if (!BossSpawned) {
+										Instantiate (TritonBoss);
+										bossHealth = 2500;
+										BossSpawned = true;
+								}
+						} else if (Application.loadedLevelName == "Level 2") {
+								if (!BossSpawned) {
+										Instantiate (TreeBoss);
+										bossHealth = 1800;
+										BossSpawned = true;
+								}
+						} else if (Application.loadedLevelName == "City Level") {
+								if (!BossSpawned) {
+										Instantiate (BullDogBoss);
+										bossHealth = 1200;
+										BossSpawned = true;
+								}
+						} else if (Application.loadedLevelName == "Grassy Plains Level") {
+								if (!BossSpawned) {
+										Instantiate (TrojanHorseBoss);
+										horseHealth = 1500;
+										BossSpawned = true;
+										trojanHorseDead = true;
+								}
+						}
+				}
+				
+				if (horseHealth <= 0 && BossSpawned) {
+						if (trojanHorseDead) {
+								GameObject TJBoss = GameObject.FindWithTag ("BossTrojanHorse");				
+								Destroy (TJBoss);
+								trojanHorseDead = false;			
+								Instantiate (TrojanBoss);
+								bossHealth = 2000;
+						}
+
+				}
+				if (bossHealth <= 0) {
+						BossSpawned = false;
 						if (Application.loadedLevelName == "Sharky and Trees") {
 								Application.LoadLevel ("Level 2");
 						} else if (Application.loadedLevelName == "Level 2") {
 								Application.LoadLevel ("Level 3");
+						} else if (Application.loadedLevelName == "Level 3") {
+								Application.LoadLevel ("Grassy Plains Level");
+						} else if (Application.loadedLevelName == "Grassy Plains Level") {
+								Application.LoadLevel ("City Level");
 						}
 				}
 				
@@ -142,8 +208,25 @@ public class Jump : MonoBehaviour
 		{
 				Die ();
 		}
-	
-		void Die ()
+		
+		public void decreaseBossHealth ()
+		{
+
+				bossHealth -= 100;
+		}
+		
+		public void decreaseHorseHealth ()
+		{
+		
+				horseHealth -= 100;
+		}
+
+		public void decreaseSlugShieldHealth ()
+		{
+				slugShieldHealth -= 200;
+		}
+
+		public void Die ()
 		{
 				Application.LoadLevel (Application.loadedLevel);
 		}
