@@ -28,22 +28,10 @@ public class MenuPause : MonoBehaviour
 		/***
 		 * Add Settings subMenu items
 		 */
-		menuSettings.Add (
-			new MenuItem (
-				"Screen Resolution",
-				() => {	}
-		));
-		menuSettings.Add (
-			new MenuItem (
-				"Music Volume",
-				() => {	Debug.Log ("Music Volume");
-		}));
-		menuSettings.Add (
-			new MenuItem (
-				"SFX Volume",
-				() => {	Debug.Log ("SFX Volume");
-		}));
-		menuSettings.Add (new MenuPrev ());
+		menuSettings.Add ( new MenuItem ( "Screen Resolution" ) );
+		menuSettings.Add ( new MenuItem ( "Music Volume" ) );
+		menuSettings.Add ( new MenuItem ( "SFX Volume" ) );
+		menuSettings.Add ( new MenuPrev () );
 	}
 
 	float savedTimeScale;

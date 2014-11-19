@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Menu;
 
-//namespace Menu
-//{
 public class MenuMain : MonoBehaviour
 {	Stack <Menu.Menu> Menus;
 	void Start ()
@@ -14,6 +12,11 @@ public class MenuMain : MonoBehaviour
 		List<MenuBase> menuMain = Menus.Peek ().M;
 		Menu.Menu MenuSettings = new Menu.Menu ();
 		List<MenuBase> menuSettings = MenuSettings.M;
+
+		/***
+		 * Add Main Menu items
+		 */
+
 		menuMain.Add(
 			new MenuItem (
 				"Play FlappyLand!",
@@ -62,4 +65,3 @@ public class MenuMain : MonoBehaviour
 		Menus.Peek().Draw (X, Y, W, H, o, Menus);
 	}
 }
-//}

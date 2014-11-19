@@ -19,7 +19,7 @@ namespace Menu
 		public void Draw (int X, int Y, int W, int H, int o, Stack<Menu> St)
 		{	foreach (MenuBase m in this.M)
 			{	GUI.SetNextControlName( m.N);
-				if(GUI.Button ( new Rect( X, Y, W, H), m.N))
+				if(GUI.Button ( new Rect( X, Y, W, H), new GUIContent(m.N, m.N)))
 				{	m.Run(St);
 				}
 				Y += o;
