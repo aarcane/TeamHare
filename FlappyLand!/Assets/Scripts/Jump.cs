@@ -37,9 +37,11 @@ public class Jump : MonoBehaviour
 	
 		// Update is called once per frame
 		void Update ()
-		{		
-				Debug.Log (bossHealth);
-				score++;
+		{	if (Time.timeScale == 0f)
+				return;	
+			
+			Debug.Log (bossHealth);
+			++score;
 				
 				if (score >= 2000) {
 						
