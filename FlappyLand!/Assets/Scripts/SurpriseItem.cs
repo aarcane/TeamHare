@@ -10,7 +10,7 @@ public class SurpriseItem : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				Destroy (gameObject, 30);
+				//Destroy (gameObject, 30);
 				rigidbody2D.velocity = velocity;
 				transform.position = new Vector3 (transform.position.x, transform.position.y - rangeY * Random.value, transform.position.z);
 		}

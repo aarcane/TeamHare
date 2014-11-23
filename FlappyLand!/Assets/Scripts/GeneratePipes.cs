@@ -5,11 +5,8 @@ public class GeneratePipes : MonoBehaviour
 {
 
 		public GameObject pipes;
-		public GameObject cheapAssRockets;
-		public GameObject spreadRocket;
 		public GameObject surpriseItem;
 
-		// Use this for initialization
 		void Start ()
 		{
 				InvokeRepeating ("CreateObstacle", 1f, 4f);
@@ -38,14 +35,14 @@ public class GeneratePipes : MonoBehaviour
 
 		void CreateCheapAssRockets ()
 		{
-				cheapAssRockets.tag = "CheapAssRockets";
-				Instantiate (cheapAssRockets);
+				surpriseItem.tag = "CheapAssRockets";
+				Instantiate (surpriseItem);
 		}
 
 		void CreateSpreadRocketItem ()
 		{
-				spreadRocket.tag = "SpreadRocketItem";
-				Instantiate (spreadRocket);
+				surpriseItem.tag = "SpreadRocketItem";
+				Instantiate (surpriseItem);
 		}
 
 		void CreateSpurpriseItem ()

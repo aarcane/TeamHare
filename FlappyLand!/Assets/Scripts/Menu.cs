@@ -17,12 +17,8 @@ namespace Menu
 			menuSelection = 0;
 		}
 		public void Draw (int X, int Y, int W, int H, int o, Stack<Menu> St)
-		{	foreach (MenuBase m in this.M)
-			{	GUI.SetNextControlName( m.N);
-				if(GUI.Button ( new Rect( X, Y, W, H), new GUIContent(m.N, m.N)))
-				{	m.Run(St);
-				}
-				Y += o;
+		{	foreach (MenuBase m in M)
+			{	m.Draw(X,ref Y, W, H, o, St);
 			}
 			GUI.FocusControl (M[menuSelection].N);
 
@@ -47,8 +43,20 @@ namespace Menu
 		{	this.N = N;
 		}
 		public abstract void Run (Stack<Menu> St);
+		public abstract void Draw (int X, ref int Y, int W, int H, int o, Stack<Menu> St);
 	}
-	public class MenuItem : MenuBase
+	public abstract class MenuButton: MenuBase
+	{
+		public MenuButton(String N): base(N) {}
+		public override void Draw (int X, ref int Y, int W, int H, int o, Stack<Menu> St)
+		{	GUI.SetNextControlName( N);
+			if(GUI.Button ( new Rect( X, Y, W, H), new GUIContent(N, N)))
+			{	Run(St);
+			}
+			Y += o;
+		}
+	}
+	public class MenuItem : MenuButton
 	{	public Action T { get; set; }
 		public MenuItem( String N) : base(N)
 		{	this.T = () => {};
@@ -61,7 +69,7 @@ namespace Menu
 			this.T ();
 		}
 	}
-	public class MenuSub : MenuBase
+	public class MenuSub : MenuButton
 	{	public Menu M { get; set; }
 		public MenuSub (string N, Menu M) : base(N)
 		{	this.M = M;
@@ -72,7 +80,7 @@ namespace Menu
 			St.Push (this.M);
 		}
 	}
-	public class MenuPrev : MenuBase
+	public class MenuPrev : MenuButton
 	{	public MenuPrev () : base("Previous") {}
 		public MenuPrev (String N) : base(N) {}
 		public override void Run(Stack<Menu> St)
@@ -80,7 +88,7 @@ namespace Menu
 			St.Pop ();
 		}
 	}
-	public class MenuQuit : MenuBase
+	public class MenuQuit : MenuButton
 	{	public MenuQuit () : base("Quit") {}
 		public MenuQuit (String N) : base(N) {}
 		public override void Run(Stack<Menu> St)

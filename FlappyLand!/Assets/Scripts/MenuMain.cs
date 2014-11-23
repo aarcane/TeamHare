@@ -12,7 +12,7 @@ public class MenuMain : MonoBehaviour
 		List<MenuBase> menuMain = Menus.Peek ().M;
 		Menu.Menu MenuSettings = new Menu.Menu ();
 		List<MenuBase> menuSettings = MenuSettings.M;
-
+		Time.timeScale = 0f;
 		/***
 		 * Add Main Menu items
 		 */
@@ -20,18 +20,22 @@ public class MenuMain : MonoBehaviour
 		menuMain.Add(
 			new MenuItem (
 				"Play FlappyLand!",
-				() => {	Application.LoadLevel(1);
+				() => {	Time.timeScale = 1.0f;
+						Application.LoadLevel(1);
+						
 		}));
 		menuMain.Add( new MenuItem ( "Play Infinite Mode" ) );
 		menuMain.Add(
 			new MenuItem (
 				"Play Level 2",
 				() => {	Application.LoadLevel(2);
+						Time.timeScale = 1.0f;
 		}));
 		menuMain.Add(
 			new MenuItem (
 				"Play Level 3",
 				() => {	Application.LoadLevel(3);
+						Time.timeScale = 1.0f;
 		}));
 		menuMain.Add(
 			new MenuSub (

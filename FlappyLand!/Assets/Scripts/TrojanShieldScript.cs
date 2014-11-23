@@ -21,4 +21,5 @@ public class TrojanShieldScript : MonoBehaviour {
 	{
 		transform.position = new Vector3 (1.453648f, Mathf.Sin (Time.time * maxSpeed), transform.position.z);
 	}
+
 }

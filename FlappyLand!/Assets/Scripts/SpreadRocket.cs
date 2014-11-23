@@ -19,24 +19,25 @@ public class SpreadRocket : MonoBehaviour
 
 		void OnTriggerEnter2D (Collider2D other)
 		{
-				if (other.gameObject.tag == "obstacle") {
+		if (other.gameObject.tag == "Player")
+			return;
+		other.gameObject.BroadcastMessage ("adjustHealth", -100);
+		Destroy (this.gameObject);
+
+		if (other.gameObject.tag == "obstacle") {
 						Destroy (this.gameObject);
-						Destroy (other.gameObject);
 				}
 				if (other.gameObject.tag == "BossSlug") {
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseBossHealth ();
-						Destroy (this.gameObject);
 				}
 				if (other.gameObject.tag == "BossTriton") {
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseBossHealth ();
-						Destroy (this.gameObject);
 				}
 				if (other.gameObject.tag == "SlugBossShields") {
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseSlugShieldHealth ();
-						Destroy (this.gameObject);
 						
 						if (player.gameObject.GetComponent<Jump> ().slugShieldHealth <= 0) {
 								Destroy (other.gameObject);
@@ -45,22 +46,18 @@ public class SpreadRocket : MonoBehaviour
 				if (other.gameObject.tag == "BossTree") {
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseBossHealth ();
-						Destroy (this.gameObject);
 				}
 				if (other.gameObject.tag == "BossBullDog") {
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseBossHealth ();
-						Destroy (this.gameObject);
 				}
 				if (other.gameObject.tag == "BossTrojanHorse") {
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseHorseHealth ();
-						Destroy (this.gameObject);
 				}
 				if (other.gameObject.tag == "BossTrojan") {
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseBossHealth ();
-						Destroy (this.gameObject);
 				}
 		}
 }

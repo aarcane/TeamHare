@@ -9,21 +9,15 @@ public class SlugBossUCSC : MonoBehaviour
 		// Use this for initialization,
 		void Start ()
 		{
-				maxSpeed = 3;
+
 				InvokeRepeating ("shootPoop", 10f, 3f);
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				Spawn ();
+		transform.position = new Vector3 (4.910788f, Mathf.Sin (Time.time * maxSpeed), transform.position.z);
 
-		}
-
-		void Spawn ()
-		{
-				transform.position = new Vector3 (4.910788f, Mathf.Sin (Time.time * maxSpeed), transform.position.z);
-		
 		}
 
 		void shootPoop ()
@@ -32,4 +26,5 @@ public class SlugBossUCSC : MonoBehaviour
 				var poopShotTransform = Instantiate (poopShot) as Transform;
 				poopShotTransform.position = transform.position;
 		}
+
 }

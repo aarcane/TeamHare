@@ -4,6 +4,13 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - fog: {instanceID: 0}
+  - TrojanHorseBoss: {instanceID: 0}
+  - TrojanBoss: {instanceID: 0}
+  - BullDogBoss: {instanceID: 0}
+  - SlugBoss: {fileID: 100000, guid: 137ba81e3c4b54618949c7467379b909, type: 2}
+  - TritonBoss: {instanceID: 0}
+  - TreeBoss: {instanceID: 0}
+  - SlugBossShields: {fileID: 100002, guid: 98905b122de4043b7a70c6b6c456e9c7, type: 2}
   - shotPrefab: {instanceID: 0}
   - spreadRocketPrefab: {instanceID: 0}
   executionOrder: 0
