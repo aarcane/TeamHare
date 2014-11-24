@@ -106,10 +106,10 @@ public class Jump : MonoBehaviour
 						}
 
 				}
-				if (bossHealth <= 0) {
-						BossSpawned = false;
-						Application.LoadLevel (Application.loadedLevel + 1);
-				}
+				//if (bossHealth <= 0) {
+				//		BossSpawned = false;
+				///		Application.LoadLevel (Application.loadedLevel + 1);
+				//}
 				
 				if (cheapRockets > 0) {
 
