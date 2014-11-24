@@ -8,26 +8,36 @@ public class GeneratePipes : MonoBehaviour
 		public GameObject cheapAssRockets;
 		public GameObject spreadRocket;
 		public GameObject surpriseItem;
-
+		public GameObject BubbleItem;
+		public GameObject superRocketItem;
+		public GameObject gravityItem;
+		public GameObject moneyBags;
 		// Use this for initialization
 		void Start ()
 		{
 				InvokeRepeating ("CreateObstacle", 1f, 4f);
-				InvokeRepeating("CreateRandomItem", 1f, 6f);
-				//	InvokeRepeating ("CreateSpreadRocketItem", 1f, 4f); 
-				//	InvokeRepeating ("CreateSpurpriseItem", 1f, 6f); 
+				InvokeRepeating ("CreateRandomItem", 1f, 6f);
 		}
 
 		void CreateRandomItem ()
 		{
 				int number = Random.Range (1, 10);
-		
+				int choice = Random.Range (1, 2);
 				if (number % 2 == 0) {
-						CreateSpreadRocketItem ();
+						if (choice == 2) {
+								CreateSpreadRocketItem ();
+						} else {
+
+								CreateSuperRocketItem ();
+						}
 				} else if (number % 3 == 0) {
 						CreateCheapAssRockets ();
+				} else if (number % 4 == 0) {
+						CreateBubbleItem ();
+				} else if (number % 5 == 0) {
+						CreateGravityItem ();
 				} else {
-						CreateSpurpriseItem ();
+						CreateMoneyItem ();
 				}
 
 		}
@@ -52,7 +62,31 @@ public class GeneratePipes : MonoBehaviour
 
 		void CreateSpurpriseItem ()
 		{
-				spreadRocket.tag = "SurpriseItem";
+				surpriseItem.tag = "SurpriseItem";
 				Instantiate (surpriseItem);
+		}
+
+		void CreateMoneyItem ()
+		{
+				moneyBags.tag = "MoneyItem";
+				Instantiate (moneyBags);
+		}
+
+		void CreateBubbleItem ()
+		{
+				BubbleItem.tag = "BubbleShieldItem";
+				Instantiate (BubbleItem);
+		}
+
+		void CreateSuperRocketItem ()
+		{
+				superRocketItem.tag = "SuperRocketItem";
+				Instantiate (superRocketItem);
+		}
+
+		void CreateGravityItem ()
+		{
+				gravityItem.tag = "GravityItem";
+				Instantiate (gravityItem);
 		}
 }

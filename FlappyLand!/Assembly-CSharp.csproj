@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{5EFEA0A9-B490-6A3F-BEEC-C4DE52862C5F}</ProjectGuid>
+	<ProjectGuid>{7D541A42-D590-F34D-1500-8F4FE57341BD}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,15 +46,32 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BananaSlugRocket.cs" />
+     <Compile Include="Assets\Scripts\BullDogBoss.cs" />
      <Compile Include="Assets\Scripts\BulletScript.cs" />
      <Compile Include="Assets\Scripts\CheapAssRocketsScript.cs" />
      <Compile Include="Assets\Scripts\FogDistraction.cs" />
      <Compile Include="Assets\Scripts\GeneratePipes.cs" />
      <Compile Include="Assets\Scripts\Jump.cs" />
+     <Compile Include="Assets\Scripts\KingTritonBoss.cs" />
+     <Compile Include="Assets\Scripts\KingTritonRocket.cs" />
+     <Compile Include="Assets\Scripts\MenuMain.cs" />
+     <Compile Include="Assets\Scripts\MenuPause.cs" />
+     <Compile Include="Assets\Scripts\MoneyBagItem.cs" />
      <Compile Include="Assets\Scripts\PipeObstacle.cs" />
+     <Compile Include="Assets\Scripts\ProtectionBubbleItem.cs" />
+     <Compile Include="Assets\Scripts\SlugBossUCSC.cs" />
+     <Compile Include="Assets\Scripts\SpartanSwordWeapon.cs" />
      <Compile Include="Assets\Scripts\SpreadRocket.cs" />
      <Compile Include="Assets\Scripts\SpreadRocketItem.cs" />
      <Compile Include="Assets\Scripts\SurpriseItem.cs" />
+     <Compile Include="Assets\Scripts\TreeBoss.cs" />
+     <Compile Include="Assets\Scripts\TreeBossCone.cs" />
+     <Compile Include="Assets\Scripts\TreeBossNeedle.cs" />
+     <Compile Include="Assets\Scripts\TrojanBoss.cs" />
+     <Compile Include="Assets\Scripts\TrojanHorseBoss.cs" />
+     <Compile Include="Assets\Scripts\TrojanShieldScript.cs" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
