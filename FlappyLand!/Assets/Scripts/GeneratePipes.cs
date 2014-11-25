@@ -6,6 +6,7 @@ public class GeneratePipes : MonoBehaviour
 
 		public GameObject pipes;
 		public GameObject surpriseItem;
+		public GameObject moneyBags;
 
 		void Start ()
 		{
@@ -15,19 +16,28 @@ public class GeneratePipes : MonoBehaviour
 
 		void CreateRandomItem ()
 		{
-				int number = Random.Range (1, 10);
+				int number = Random.Range (0, 10);
 		
-				if (number % 2 == 0) {
-						CreateSpreadRocketItem ();
-				} else if (number % 3 == 0) {
-						CreateCheapAssRockets ();
-				} else {
-						CreateSpurpriseItem ();
+				if (number == 1) {
+					CreateCheapAssRockets ();
+				} else if (number == 2) {
+					CreateSpreadRocketItem ();
+				} else if (number == 3){
+					CreateBubbleItem ();
+				} else if (number == 4 ) {
+					CreateSuperRocketItem ();
+				} else if (number == 5) {
+					CreateGravityItem ();
+				} else if (number == 6) {
+					CreateGravityItem ();
+				} else if (number == 7) {
+					CreateMoneyItem ();
 				}
 
-		}
-
-		void CreateObstacle ()
+		
+	}
+	
+	void CreateObstacle ()
 		{
 				pipes.tag = "obstacle";
 				Instantiate (pipes);
@@ -50,4 +60,28 @@ public class GeneratePipes : MonoBehaviour
 				surpriseItem.tag = "SurpriseItem";
 				Instantiate (surpriseItem);
 		}
+		void CreateMoneyItem ()
+		{
+			moneyBags.tag = "MoneyItem";
+			Instantiate (moneyBags);
+		}
+	
+		void CreateBubbleItem ()
+		{
+			surpriseItem.tag = "BubbleShieldItem";
+			Instantiate (surpriseItem);
+		}
+		
+		void CreateSuperRocketItem ()
+		{
+			surpriseItem.tag = "SuperRocketItem";
+			Instantiate (surpriseItem);
+		}
+		
+		void CreateGravityItem ()
+		{
+			surpriseItem.tag = "GravityItem";
+			Instantiate (surpriseItem);
+		}
+
 }
