@@ -6,7 +6,7 @@ using Menu;
 public class MenuPause : MonoBehaviour
 {	Stack <Menu.Menu> Menus;
 	bool showGui = false;
-	void Start ()
+	void Awake ()
 	{	Menus = new Stack<Menu.Menu> ();
 		Menus.Push(new Menu.Menu());
 		List<MenuBase> menuMain = Menus.Peek ().M;

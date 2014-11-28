@@ -22,8 +22,16 @@ public class BulletScript : MonoBehaviour
 		{
 			if (other.gameObject.tag == "Player" | other.gameObject.tag == "Friendly")
 						return;
-		Debug.Log ("Sending Message adjustHealth -100 to " + other.gameObject.ToString());
-		other.gameObject.BroadcastMessage ("adjustHealth", -100);//, SendMessageOptions.DontRequireReceiver);
+		HasHealth otherHealth = other.GetComponent<HasHealth> ();
+		if (otherHealth != null)
+		{	otherHealth.adjustHealth (-100);
+			Destroy (this.gameObject);
+		} else
+		{	Debug.Log ("Unknown Object: " + other.ToString());
+		}
+
+		//Debug.Log ("Sending Message adjustHealth -100 to " + other.gameObject.ToString());
+		//other.gameObject.BroadcastMessage ("adjustHealth", -100);//, SendMessageOptions.DontRequireReceiver);
 		//GameObject player = GameObject.FindGameObjectWithTag ("Player");
 
 				//if (other.gameObject.tag == "obstacle") {
@@ -53,7 +61,7 @@ public class BulletScript : MonoBehaviour
 				//if (other.gameObject.tag == "BossTrojan") {
 				//		player.gameObject.GetComponent<Jump> ().decreaseBossHealth ();
 				//}
-		Destroy (this.gameObject);
+		//Destroy (this.gameObject);
 
 		}
 }
