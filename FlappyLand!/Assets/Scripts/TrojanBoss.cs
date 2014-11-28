@@ -11,7 +11,7 @@ public class TrojanBoss : MonoBehaviour {
 	void Start ()
 	{
 		maxSpeed = 3;
-		InvokeRepeating ("chooseWeapon", 10f, 2f);
+		InvokeRepeating ("chooseWeapon", 1f, 2f);
 	}
 	
 	// Update is called once per frame
@@ -27,7 +27,6 @@ public class TrojanBoss : MonoBehaviour {
 		
 		if (number % 2 == 0) {
 			shootSword ();
-			Invoke ("shootNeedles", 1);
 		} else if (number % 5 == 0) {
 			makeShield ();
 		} 
@@ -41,13 +40,18 @@ public class TrojanBoss : MonoBehaviour {
 	
 	void shootSword ()
 	{
-		swordShot.tag = "obstacle";
-		var swordShotTransform = Instantiate (swordShot) as Transform;
-		swordShotTransform.position = transform.position;
+		shootProjectile (swordShot, transform.position + new Vector3 (0f, 1.4f, 0f), 19f);
+		shootProjectile (swordShot, transform.position, 0f);
+		shootProjectile (swordShot, transform.position - new Vector3 (0f, 1.4f, 0f), -19f);
 	}
 	void makeShield ()
 	{
 		shield.tag = "obstacle";
 		Instantiate (shield);
+	}
+	void shootProjectile (Transform shoot, Vector3 origin, float angle = 0, int speed = 600)
+	{
+		Transform shot = Instantiate (shoot, origin, Quaternion.Euler (0f, 0f, 153.1437f)) as Transform;
+		shot.rigidbody2D.AddForce (-(new Vector2 (Mathf.Cos (Mathf.Deg2Rad * angle), Mathf.Sin (Mathf.Deg2Rad * angle)) * speed));
 	}
 }

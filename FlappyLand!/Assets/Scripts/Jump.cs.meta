@@ -3,16 +3,20 @@ guid: c6fcfe828f785409db9dc728860edb3e
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - fog: {instanceID: 0}
-  - TrojanHorseBoss: {instanceID: 0}
-  - TrojanBoss: {instanceID: 0}
-  - BullDogBoss: {instanceID: 0}
+  - fog: {fileID: 100000, guid: 64bb4c4919c8b4a52be572e890b9a6e8, type: 2}
+  - TrojanHorseBoss: {fileID: 100000, guid: bea5af8c8a57247e28cd1d3692303503, type: 2}
+  - TrojanBoss: {fileID: 100000, guid: 63e7cb3c41d704c8a86bdce87d599848, type: 2}
+  - BullDogBoss: {fileID: 100000, guid: 1e2b4d018ee234bdfb6f8bb245a98717, type: 2}
   - SlugBoss: {fileID: 100000, guid: 137ba81e3c4b54618949c7467379b909, type: 2}
-  - TritonBoss: {instanceID: 0}
-  - TreeBoss: {instanceID: 0}
+  - TritonBoss: {fileID: 100000, guid: 1362f7f7a0cbe48a5a291869e6d246c5, type: 2}
+  - TreeBoss: {fileID: 100000, guid: 8eef4258e40e64d51889ccd307f2c779, type: 2}
+  - FrostBoss1: {fileID: 100000, guid: 6f5e48b162c3444e88bb2df1086672a6, type: 2}
+  - FrostBoss2: {instanceID: 0}
+  - FrostBoss3: {instanceID: 0}
   - SlugBossShields: {fileID: 100002, guid: 98905b122de4043b7a70c6b6c456e9c7, type: 2}
   - shotPrefab: {instanceID: 0}
   - spreadRocketPrefab: {instanceID: 0}
+  - BubbleShield: {fileID: 400000, guid: 01c2fa34aae274ddd997fad7c2cf1707, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

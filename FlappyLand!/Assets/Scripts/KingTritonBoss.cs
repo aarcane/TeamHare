@@ -28,8 +28,13 @@ public class KingTritonBoss : MonoBehaviour {
 	
 	void shootTriton ()
 	{
-		tritonShot.tag = "obstacle";
-		var tritonShotTransform = Instantiate (tritonShot) as Transform;
-		tritonShotTransform.position = transform.position;
+		shootProjectile (tritonShot, transform.position + new Vector3 (0f, 1.4f, 0f), 0f);
+		shootProjectile (tritonShot, transform.position, 0f);
+		shootProjectile (tritonShot, transform.position - new Vector3 (0f, 1.4f, 0f), 0f);
+	}
+	void shootProjectile (Transform shoot, Vector3 origin, float angle = 0, int speed = 1100)
+	{
+		Transform shot = Instantiate (shoot, origin, Quaternion.Euler (0f, 0f, 43)) as Transform;
+		shot.rigidbody2D.AddForce (-(new Vector2 (Mathf.Cos (Mathf.Deg2Rad * angle), Mathf.Sin (Mathf.Deg2Rad * angle)) * speed));
 	}
 }

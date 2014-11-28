@@ -38,6 +38,24 @@ public class MenuMain : MonoBehaviour
 						Time.timeScale = 1.0f;
 		}));
 		menuMain.Add(
+			new MenuItem (
+			"Play Beach Level",
+			() => {	Application.LoadLevel(5);
+			Time.timeScale = 1.0f;
+		}));
+		menuMain.Add(
+			new MenuItem (
+			"Play Final Level",
+			() => {	Application.LoadLevel(6);
+			Time.timeScale = 1.0f;
+		}));
+		menuMain.Add(
+			new MenuItem (
+			"Play Plains Level",
+			() => {	Application.LoadLevel(4);
+			Time.timeScale = 1.0f;
+		}));
+		menuMain.Add(
 			new MenuSub (
 				"Settings",
 				MenuSettings

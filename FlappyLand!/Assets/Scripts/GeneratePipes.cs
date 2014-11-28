@@ -10,7 +10,9 @@ public class GeneratePipes : MonoBehaviour
 
 		void Start ()
 		{
-				InvokeRepeating ("CreateObstacle", 1f, 4f);
+		if (Application.loadedLevelName != "Frost Boss") {
+						InvokeRepeating ("CreateObstacle", 1f, 4f);
+				}
 				InvokeRepeating("CreateRandomItem", 1f, 6f);
 		}
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class PipeObstacle : MonoBehaviour {
 
 	public Vector2 velocity = new Vector2(-4, 0);
-	public float rangeY = 4;
+	public float rangeY = 5f;
 	
 	// Use this for initialization
 	void Start()
