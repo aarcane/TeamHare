@@ -3,16 +3,16 @@ using System.Collections;
 
 public class SpartanSwordWeapon : MonoBehaviour {
 
-	Vector3 lastPosition;
+	//Vector3 lastPosition;
 	// Use this for initialization
 	void Start () {
-		Destroy (gameObject, 3);
-		lastPosition = transform.position;
+		//Destroy (gameObject, 3);
+		//lastPosition = transform.position;
 	}
 	
 	void Update ()
 	{
-		lastPosition = transform.position;
+		//lastPosition = transform.position;
 	}
 	
 	void OnTriggerEnter2D (Collider2D other)

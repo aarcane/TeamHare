@@ -24,7 +24,7 @@ public class SpreadRocket : MonoBehaviour
 		other.gameObject.BroadcastMessage ("adjustHealth", -100);
 		Destroy (this.gameObject);
 
-		if (other.gameObject.tag == "obstacle") {
+/*		if (other.gameObject.tag == "obstacle") {
 						Destroy (this.gameObject);
 				}
 				if (other.gameObject.tag == "BossSlug") {
@@ -59,6 +59,7 @@ public class SpreadRocket : MonoBehaviour
 						GameObject player = GameObject.FindGameObjectWithTag ("Player");
 						player.gameObject.GetComponent<Jump> ().decreaseBossHealth ();
 				}
+				*/
 		}
 }
 

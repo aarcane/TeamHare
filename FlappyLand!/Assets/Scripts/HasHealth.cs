@@ -8,6 +8,7 @@ public class HasHealth : MonoBehaviour {
 	GUIStyle healthBarStyle;
 	GUIStyle healthBoxStyle;
 	int healthBarLength;
+	public GameObject spawnNext = null;
 
 	void Update() {}
 
@@ -74,20 +75,22 @@ public class HasHealth : MonoBehaviour {
 	bool dead() { return (currentHealth <= 0); }
 
 	public void die(bool force = false)
-	{	Debug.Log ("Destroying " + ToString());
-		if (!dead () && !force)
-						return;
-		if (isBoss)
+	{	if (!dead () && !force)
+			return;
+		Debug.Log ("Destroying " + ToString());
+		if (spawnNext != null)
+		{	Instantiate(spawnNext);
+		} else if (isBoss)
 		{	Application.LoadLevel (Application.loadedLevel + 1);
 		}
-		if (this.gameObject.tag == "FrostBoss1") {
-			GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().setBossDead ("FrostBoss1");
-			GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().BossSpawned = false;
-		}
-		if (this.gameObject.tag == "BossTrojanHorse") {
-			GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().setBossDead ("BossTrojanHorse");
-		}
+		//if (this.gameObject.tag == "FrostBoss1") {
+		//	GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().setBossDead ("FrostBoss1");
+			//GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().BossSpawned = false;
+		//}
+		//if (this.gameObject.tag == "BossTrojanHorse") {
+		//	GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().setBossDead ("BossTrojanHorse");
+		//}
 		
-		Destroy (this);
+		Destroy (this.gameObject);
 	}
 }

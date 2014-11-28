@@ -4,35 +4,35 @@ using System.Collections;
 public class Jump : MonoBehaviour
 {
 		public GameObject fog;
-		public GameObject TrojanHorseBoss;
-		public GameObject TrojanBoss;
-		public GameObject BullDogBoss;
-		public GameObject SlugBoss;
-		public GameObject TritonBoss;
-		public GameObject TreeBoss;
-		public GameObject FrostBoss1;
-		public GameObject FrostBoss2;
-		public GameObject FrostBoss3;
-		public GameObject SlugBossShields;
+//		public GameObject TrojanHorseBoss;
+//		public GameObject TrojanBoss;
+//		public GameObject BullDogBoss;
+//		public GameObject SlugBoss;
+//		public GameObject TritonBoss;
+//		public GameObject TreeBoss;
+//		public GameObject FrostBoss1;
+//		public GameObject FrostBoss2;
+//		public GameObject FrostBoss3;
+//		public GameObject SlugBossShields;
 
 		//Boss Killed Will be set here 
-		public int bossHealth;
-		public int horseHealth;
-		public int slugShieldHealth;
-		public bool BossSpawned = false;
-		public bool trojanHorseDead = false;
-		public bool frostBoss1Dead = false;
-		public bool frostBoss2Dead = false;
-		public bool frostBoss3Dead = false;
+//		public int bossHealth;
+//		public int horseHealth;
+//		public int slugShieldHealth;
+//		public bool BossSpawned = false;
+//		public bool trojanHorseDead = false;
+//		public bool frostBoss1Dead = false;
+//		public bool frostBoss2Dead = false;
+//		public bool frostBoss3Dead = false;
 		//Decrease score by 50
 		public int cheapRockets;
 		public int spreadRockets;
 		public int superSpreadRockets;
 		public int gravityItem;
-		public int itemDuration;
+//		public int itemDuration;
 		public bool hasBubbleShield = false;
-		public bool hasSuperSpreadRocket = false;
-		public bool hasGravityItem = false;
+//		public bool hasSuperSpreadRocket = false;
+//		public bool hasGravityItem = false;
 		public int textDuration = 0;
 
 		//score shown on GUI
@@ -40,7 +40,6 @@ public class Jump : MonoBehaviour
 
 		//The "bullet" object that is referenced in the code
 		public Transform shotPrefab;
-		public Transform spreadRocketPrefab;
 		public Transform BubbleShield;
 
 
@@ -59,11 +58,11 @@ public class Jump : MonoBehaviour
 				if (level == 0)
 						return;
 				transform.position = new Vector3 (-3.553207f, 0f, -0.01f);
-				bossHealth = 1;
-				horseHealth = 1;
-				slugShieldHealth = 1;
-				BossSpawned = false;
-				trojanHorseDead = false;
+				//bossHealth = 1;
+				//horseHealth = 1;
+				//slugShieldHealth = 1;
+				//BossSpawned = false;
+				//trojanHorseDead = false;
 				setJumpForce (defaultJumpForce);
 		}
 		// Update is called once per frame
@@ -76,7 +75,7 @@ public class Jump : MonoBehaviour
 				//if(BossSpawned)
 				//Debug.Log ("Boss Health: " + bossHealth);
 				++score;
-
+		/*
 				if (Application.loadedLevelName == "Frost Boss") {
 						if (!BossSpawned && !frostBoss1Dead && !frostBoss2Dead && !frostBoss3Dead) {
 								Instantiate (FrostBoss2);
@@ -87,7 +86,7 @@ public class Jump : MonoBehaviour
 								BossSpawned = true;
 						}
 				}
-				
+
 				if (score >= 2000) {
 						
 						if (Application.loadedLevelName == "Sharky and Trees") {
@@ -134,6 +133,7 @@ public class Jump : MonoBehaviour
 						
 
 				}
+				*/
 				//if (bossHealth <= 0) {
 				//		BossSpawned = false;
 				///		Application.LoadLevel (Application.loadedLevel + 1);
@@ -276,7 +276,7 @@ public class Jump : MonoBehaviour
 				Die ();
 		}
 
-		public void setBossDead (string bossName)
+		/*public void setBossDead (string bossName)
 		{
 				switch (bossName) {
 
@@ -289,8 +289,8 @@ public class Jump : MonoBehaviour
 				}
 
 		}
-
-		public void decreaseBossHealth ()
+*/
+/*		public void decreaseBossHealth ()
 		{
 
 				bossHealth -= 100;
@@ -310,7 +310,7 @@ public class Jump : MonoBehaviour
 		{
 				slugShieldHealth -= 200;
 		}
-
+*/
 		public void Die ()
 		{
 				Application.LoadLevel (Application.loadedLevel);

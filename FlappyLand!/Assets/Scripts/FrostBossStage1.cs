@@ -75,14 +75,14 @@ public class FrostBossStage1 : MonoBehaviour
 		void makeShield ()
 		{
 				trojanShield.tag = "obstacle";
-				trojanShield.gameObject.GetComponent<HasHealth> ().setHealth (900);
+				trojanShield.gameObject.GetComponent<HasHealth> ().health = 900;
 				Instantiate (trojanShield);
 		}
 
 		void makeMushroomShield ()
 		{
 				mushroomShield.tag = "obstacle";
-				mushroomShield.gameObject.GetComponent<HasHealth> ().setHealth (1000);
+				mushroomShield.gameObject.GetComponent<HasHealth> ().health =  1000;
 				Instantiate (mushroomShield);
 		}
 }
