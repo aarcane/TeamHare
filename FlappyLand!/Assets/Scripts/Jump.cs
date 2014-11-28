@@ -36,7 +36,8 @@ public class Jump : MonoBehaviour
 		public int textDuration = 0;
 
 		//score shown on GUI
-		public int score;
+		public static int score;
+		public static int bestScore;
 
 		//The "bullet" object that is referenced in the code
 		public Transform shotPrefab;
@@ -313,7 +314,7 @@ public class Jump : MonoBehaviour
 */
 		public void Die ()
 		{
-				Application.LoadLevel (Application.loadedLevel);
+				Application.LoadLevel ("InfiniteGameOver");
 		}
 
 		public void setJumpForce (int newforce)
