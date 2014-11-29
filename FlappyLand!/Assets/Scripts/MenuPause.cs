@@ -40,9 +40,11 @@ public class MenuPause : MonoBehaviour
 		if (showGui)
 		{	savedTimeScale = Time.timeScale;
 			Time.timeScale = 0f;
+			//Jump.instance.gameObject.SetActive(false);
 		}
 		else
-		{	Time.timeScale = savedTimeScale;	
+		{	Time.timeScale = savedTimeScale;
+			//Jump.instance.gameObject.SetActive(true);
 		}
 	}
 

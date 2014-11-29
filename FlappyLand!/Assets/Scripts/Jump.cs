@@ -4,26 +4,7 @@ using System.Collections;
 public class Jump : MonoBehaviour
 {
 		public GameObject fog;
-//		public GameObject TrojanHorseBoss;
-//		public GameObject TrojanBoss;
-//		public GameObject BullDogBoss;
-//		public GameObject SlugBoss;
-//		public GameObject TritonBoss;
-//		public GameObject TreeBoss;
-//		public GameObject FrostBoss1;
-//		public GameObject FrostBoss2;
-//		public GameObject FrostBoss3;
-//		public GameObject SlugBossShields;
 
-		//Boss Killed Will be set here 
-//		public int bossHealth;
-//		public int horseHealth;
-//		public int slugShieldHealth;
-//		public bool BossSpawned = false;
-//		public bool trojanHorseDead = false;
-//		public bool frostBoss1Dead = false;
-//		public bool frostBoss2Dead = false;
-//		public bool frostBoss3Dead = false;
 		//Decrease score by 50
 		public int cheapRockets;
 		public int spreadRockets;
@@ -59,90 +40,22 @@ public class Jump : MonoBehaviour
 				if (level == 0)
 						return;
 				transform.position = new Vector3 (-3.553207f, 0f, -0.01f);
-				//bossHealth = 1;
-				//horseHealth = 1;
-				//slugShieldHealth = 1;
-				//BossSpawned = false;
-				//trojanHorseDead = false;
 				setJumpForce (defaultJumpForce);
+				gravityItem = 0;
 		}
+
 		// Update is called once per frame
 		void Update ()
-		{
-				if (Application.loadedLevel == 0)
+		{		if (Application.loadedLevel == 0)
 						return;
 				if (Time.timeScale == 0f)
 						return;	
-				//if(BossSpawned)
-				//Debug.Log ("Boss Health: " + bossHealth);
+
 				++score;
-		/*
-				if (Application.loadedLevelName == "Frost Boss") {
-						if (!BossSpawned && !frostBoss1Dead && !frostBoss2Dead && !frostBoss3Dead) {
-								Instantiate (FrostBoss2);
-								BossSpawned = true;
-						}
-						if (frostBoss1Dead && !BossSpawned) {
-								Instantiate (FrostBoss2);
-								BossSpawned = true;
-						}
-				}
 
-				if (score >= 2000) {
-						
-						if (Application.loadedLevelName == "Sharky and Trees") {
-								if (!BossSpawned) {
-										Instantiate (SlugBoss);
-										Instantiate (SlugBossShields);
-										bossHealth = 2000;
-										slugShieldHealth = 1000;
-										BossSpawned = true;
-								}
-						} else if (Application.loadedLevelName == "Level 3") {
-								if (!BossSpawned) {
-										Instantiate (TritonBoss);
-										bossHealth = 2500;
-										BossSpawned = true;
-								}
-						} else if (Application.loadedLevelName == "Level 2") {
-								if (!BossSpawned) {
-										Instantiate (TreeBoss);
-										bossHealth = 1800;
-										BossSpawned = true;
-								}
-						} else if (Application.loadedLevelName == "City Level") {
-								if (!BossSpawned) {
-										Instantiate (BullDogBoss);
-										bossHealth = 1200;
-										BossSpawned = true;
-								}
-						} else if (Application.loadedLevelName == "Grassy Plains Level") {
-								if (!BossSpawned) {
-										Instantiate (TrojanHorseBoss);
-										horseHealth = 1500;
-										BossSpawned = true;
-								}
 
-						}
-				}
-
-				if (trojanHorseDead && BossSpawned && Application.loadedLevelName == "Grassy Plains Level") {
-
-						trojanHorseDead = false;			
-						Instantiate (TrojanBoss);
-						bossHealth = 2000;
-						
-
-				}
-				*/
-				//if (bossHealth <= 0) {
-				//		BossSpawned = false;
-				///		Application.LoadLevel (Application.loadedLevel + 1);
-				//}
-				
 				if (cheapRockets > 0)
 						--cheapRockets;
-		
 				if (spreadRockets > 0)
 						--spreadRockets;
 				if (superSpreadRockets > 0)
@@ -152,20 +65,20 @@ public class Jump : MonoBehaviour
 						if (gravityItem <= 0) {
 								gravityItem = 0;
 								setJumpForce (defaultJumpForce);
-						}
-				}
+				}		}
+
 				if (hasBubbleShield) {
 						Transform bubbleShieldItem = Instantiate (BubbleShield) as Transform;
 						bubbleShieldItem.position = transform.position;
 				}
 
-				
 				// Jump
-				//if (Input.GetKeyUp ("space")) {
 				if (Input.GetButtonDown ("Jump")) {
 						rigidbody2D.velocity = Vector2.zero;
 						rigidbody2D.AddForce (jumpForce);
 				}
+				
+				// Fire various rockets!
 				if (Input.GetButtonDown ("Fire1")) {
 						if (CanLaunchRocket ()) {
 								shootRocket (transform.position);
@@ -181,17 +94,17 @@ public class Jump : MonoBehaviour
 				if (Input.GetButtonDown ("Fire3")) {
 						if (superSpreadRockets > 0 && CanLaunchRocket ()) {
 								Vector3[] origins = new Vector3[4];
-								origins [0] = transform.position + new Vector3 (0f, .7f, 0f);
-								origins [1] = transform.position - new Vector3 (0f, .7f, 0f);
-								origins [2] = transform.position;
-								origins [3] = transform.position + new Vector3 (0f, 1.4f, 0f);
+								int i = 0;
+								origins [i++] = transform.position + new Vector3 (0f, 2.0f, 0f);
+								origins [i++] = transform.position + new Vector3 (0f, 1.0f, 0f);
+								origins [i++] = transform.position - new Vector3 (0f, 1.0f, 0f);
+								origins [i++] = transform.position - new Vector3 (0f, 2.0f, 0f);;
+								
 								foreach (Vector3 o in origins) {
 										shootRocket (o, 20);
 										shootRocket (o);
 										shootRocket (o, -20);
-								}
-						}
-				}
+				}		}		}
 
 
 				Vector2 screenPosition = Camera.main.WorldToScreenPoint (transform.position);
@@ -201,15 +114,13 @@ public class Jump : MonoBehaviour
 		}
 
 		void shootRocket (Vector3 origin, float angle = 0, int speed = 800)
-		{
-				Transform shot;
+		{		Transform shot;
 				shot = Instantiate (shotPrefab, origin, Quaternion.Euler (0f, 30f, angle)) as Transform;
 				shot.rigidbody2D.AddForce (new Vector2 (Mathf.Cos (Mathf.Deg2Rad * angle), Mathf.Sin (Mathf.Deg2Rad * angle)) * speed);
 		}
 
 		void OnGUI ()
-		{
-				if (Application.loadedLevel == 0)
+		{		if (Application.loadedLevel == 0)
 						return;
 				GUIStyle myStyle = new GUIStyle ();
 				myStyle.fontSize = 25;
@@ -230,26 +141,16 @@ public class Jump : MonoBehaviour
 				}
 				if (textDuration > 0 && hasBubbleShield) {
 						GUI.Label (new Rect (200, 160, 400, 30), "SICK! STRONG BUBBLE SHIELD, BUDDY!", myStyle);
-				}
-
-		}
+		}		}
 
 		void OnTriggerEnter2D (Collider2D other)
-		{
-				if (other.gameObject.tag == "CheapAssRockets") {
-						
-						//itemDuration = 700;
-						//HitCheapAssRockets = true;
+		{		if (other.gameObject.tag == "CheapAssRockets") {
 						cheapRockets += 700;
 						Destroy (other.gameObject);
 				} else if (other.gameObject.tag == "SpreadRocketItem") {
-
-						//hasSpreadRocket = true;
-						//itemDuration = 700;
 						spreadRockets += 700;
 						Destroy (other.gameObject);
 				} else if (other.gameObject.tag == "SurpriseItem") {
-
 						Instantiate (fog);
 						Destroy (other.gameObject);
 				} else if (other.gameObject.tag == "MoneyItem") {
@@ -273,63 +174,23 @@ public class Jump : MonoBehaviour
 		}
 
 		void OnCollisionEnter2D (Collision2D other)
-		{
-				Die ();
+		{		Die ();
 		}
 
-		/*public void setBossDead (string bossName)
-		{
-				switch (bossName) {
-
-				case "FrostBoss1":
-						frostBoss1Dead = true;
-						break;
-				case "BossTrojanHorse":
-						trojanHorseDead = true;
-						break;
-				}
-
-		}
-*/
-/*		public void decreaseBossHealth ()
-		{
-
-				bossHealth -= 100;
-		}
-
-		public void killBoss ()
-		{
-				bossHealth = 0;
-		}
-
-		public void decreaseHorseHealth ()
-		{
-				horseHealth -= 100;
-		}
-
-		public void decreaseSlugShieldHealth ()
-		{
-				slugShieldHealth -= 200;
-		}
-*/
 		public void Die ()
-		{
-				Application.LoadLevel ("InfiniteGameOver");
+		{		Application.LoadLevel ("InfiniteGameOver");
 		}
 
 		public void setJumpForce (int newforce)
-		{
-				jumpForce = new Vector2 (0, newforce);
+		{		jumpForce = new Vector2 (0, newforce);
 		}
 
 		public void disableBubbleShield ()
-		{	
-				hasBubbleShield = false;
+		{		hasBubbleShield = false;
 		}
 
 		bool CanLaunchRocket ()
-		{
-				bool fire = false;
+		{		bool fire = false;
 				if (cheapRockets > 0 && score >= 50) {
 						score -= 50;
 						fire = true;
@@ -338,6 +199,4 @@ public class Jump : MonoBehaviour
 						fire = true;
 				}
 				return fire;
-		}
-
-}
+}		}

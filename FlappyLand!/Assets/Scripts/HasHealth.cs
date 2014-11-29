@@ -42,15 +42,6 @@ public class HasHealth : MonoBehaviour {
 		healthBoxStyle.border.top = 1;
 		healthBoxStyle.border.bottom = 1;
 		healthBarStyle.normal.background = MakeTexture (healthBarLength, 10, new Color (2.0f *(1- ((float)currentHealth / (float)health)), 2.0f*((float)currentHealth / (float)health), 0f, 0.5f));
-		/*if(currentHealth > (health/2))
-		{
-			healthStyle.normal.background = MakeTexture(healthBarLength, 10, new Color( 0f, 1f, 0f, 0.5f ) );
-		}
-		else
-		{
-			healthStyle.normal.background = MakeTexture(healthBarLength, 10, new Color( 1f, 0f, 0f, 0.5f ) );
-		}
-		*/
 	}
 
 	private Texture2D MakeTexture(int width, int height, Color col )
@@ -83,14 +74,7 @@ public class HasHealth : MonoBehaviour {
 		} else if (isBoss)
 		{	Application.LoadLevel (Application.loadedLevel + 1);
 		}
-		//if (this.gameObject.tag == "FrostBoss1") {
-		//	GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().setBossDead ("FrostBoss1");
-			//GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().BossSpawned = false;
-		//}
-		//if (this.gameObject.tag == "BossTrojanHorse") {
-		//	GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<Jump> ().setBossDead ("BossTrojanHorse");
-		//}
-		
+
 		Destroy (this.gameObject);
 	}
 }
