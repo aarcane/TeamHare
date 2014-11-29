@@ -28,3 +28,8 @@ sysinfo.txt
 #local build files
 /*.exe
 /*_Data/
+*.7z
+*.zip
+*.rar
+*.tar
+*.tar.*
