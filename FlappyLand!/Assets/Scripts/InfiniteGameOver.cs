@@ -5,16 +5,17 @@ public class InfiniteGameOver : MonoBehaviour {
 	
 	public GUIText yourScore;
 	public GUIText highScore;
-	public int myScore;
-	public int bestScore;
-
+	int myScore;
+	int bestScore;
+	float oldTimeScale;
 	// Use this for initialization
 	void Start () {
 //		yourScore = GameObject.Find ("yourscore").guiText;
 //		highScore = GameObject.Find ("highscore").guiText;
-
-		myScore = Jump.score;
-		bestScore = Jump.bestScore;
+		oldTimeScale = Time.timeScale;
+		Time.timeScale = 0f;
+		myScore = Jump.instance.score;
+		bestScore = Jump.instance.bestScore;
 
 //		print (myScore);
 
@@ -34,8 +35,9 @@ public class InfiniteGameOver : MonoBehaviour {
 
 	IEnumerator exit() {
 		yield return new WaitForSeconds(5);
-		Jump.score = 0;
-		Jump.bestScore = bestScore;
-		Application.LoadLevel("Sharky and Trees");
+		Jump.instance.score = 0;
+		Jump.instance.bestScore = bestScore;
+		Time.timeScale = oldTimeScale;
+		Application.LoadLevel(1);
 	}
 }

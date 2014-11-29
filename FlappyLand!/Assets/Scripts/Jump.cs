@@ -36,8 +36,8 @@ public class Jump : MonoBehaviour
 		public int textDuration = 0;
 
 		//score shown on GUI
-		public static int score;
-		public static int bestScore;
+		public int score;
+		public int bestScore;
 
 		//The "bullet" object that is referenced in the code
 		public Transform shotPrefab;
@@ -48,9 +48,9 @@ public class Jump : MonoBehaviour
 		// This can be changed in the Inspector window
 		public int defaultJumpForce = 900;
 		Vector2 jumpForce;
-
+	public static Jump instance;
 		void Start ()
-		{
+		{	instance = this;
 				DontDestroyOnLoad (gameObject);
 		}
 
