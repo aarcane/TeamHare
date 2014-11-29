@@ -33,6 +33,7 @@ public class Jump : MonoBehaviour
 		void Start ()
 		{	instance = this;
 				DontDestroyOnLoad (gameObject);
+			this.gameObject.SetActive (false);
 		}
 
 		void OnLevelWasLoaded (int level)
@@ -42,6 +43,7 @@ public class Jump : MonoBehaviour
 				transform.position = new Vector3 (-3.553207f, 0f, -0.01f);
 				setJumpForce (defaultJumpForce);
 				gravityItem = 0;
+				Time.timeScale = 1.0f;
 		}
 
 		// Update is called once per frame
@@ -95,10 +97,10 @@ public class Jump : MonoBehaviour
 						if (superSpreadRockets > 0 && CanLaunchRocket ()) {
 								Vector3[] origins = new Vector3[4];
 								int i = 0;
-								origins [i++] = transform.position + new Vector3 (0f, 2.0f, 0f);
-								origins [i++] = transform.position + new Vector3 (0f, 1.0f, 0f);
-								origins [i++] = transform.position - new Vector3 (0f, 1.0f, 0f);
-								origins [i++] = transform.position - new Vector3 (0f, 2.0f, 0f);;
+								origins [i++] = transform.position + new Vector3 (0f, 1.8f, 0f);
+								origins [i++] = transform.position + new Vector3 (0f, 0.9f, 0f);
+								origins [i++] = transform.position - new Vector3 (0f, 0.9f, 0f);
+								origins [i++] = transform.position - new Vector3 (0f, 1.8f, 0f);;
 								
 								foreach (Vector3 o in origins) {
 										shootRocket (o, 20);
