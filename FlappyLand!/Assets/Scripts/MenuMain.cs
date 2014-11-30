@@ -24,7 +24,11 @@ public class MenuMain : MonoBehaviour
 				() => {	LoadLevel(1);
 						
 		}));
-		menuMain.Add( new MenuItem ( "Play Infinite Mode" ) );
+		menuMain.Add(
+			new MenuItem ( 
+				"Play Infinite Mode",
+				() => {	LoadLevel ("InfiniteMode");
+		}));
 		menuMain.Add(
 			new MenuItem (
 				"Play Level 2",
@@ -75,6 +79,10 @@ public class MenuMain : MonoBehaviour
 	void LoadLevel(int levelNum)
 	{	Jump.instance.gameObject.SetActive (true);
 		Application.LoadLevel (levelNum);
+	}
+	void LoadLevel(String levelName)
+	{	Jump.instance.gameObject.SetActive (true);
+		Application.LoadLevel (levelName);
 	}
 	void OnGUI()
 	{	int X = Screen.width / 2 - 50;

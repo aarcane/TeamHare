@@ -16,6 +16,10 @@ public class BackgroundChangable : MonoBehaviour
 	public int CycleTime;
 	int currentCycleTime;
 	float fadeStart = 0f;
+	public static BackgroundChangable instance;
+	void Awake()
+	{	instance = this;
+	}
 	// Use this for initialization
 	void Start ()
 	{	for (int i = 0; i < backgrounds.Length; ++i)
@@ -49,7 +53,7 @@ public class BackgroundChangable : MonoBehaviour
 	}	}
 	void SelectNextBackground ()
 	{	prev = current;
-		Debug.Log ("SelectNextBackground()");
+		//Debug.Log ("SelectNextBackground()");
 		while (prev == current)
 			current = Random.Range (0, backgrounds.Length);
 		currentCycleTime = CycleTime;
@@ -58,7 +62,7 @@ public class BackgroundChangable : MonoBehaviour
 		fadeOut = true;
 	}
 	void SwitchBackground()
-	{	Debug.Log ("Random.Range(0, " + currentCycleTime);
+	{	//Debug.Log ("Random.Range(0, " + currentCycleTime);
 		if (Random.Range (0, currentCycleTime) == 0)
 			SelectNextBackground();
 		else

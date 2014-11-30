@@ -10,6 +10,12 @@ public class HasHealth : MonoBehaviour {
 	int healthBarLength;
 	public GameObject spawnNext = null;
 
+	//Only used in Infinite mode to provide a callback for the bosses 
+	// to notify the objectSpawner so it knows when the boss has died.
+	public bool doCallOnDie = false;
+	public delegate void delegateCallOnDie ();
+	public delegateCallOnDie callOnDie;
+
 	void Update() {}
 
 	void Start () {
@@ -48,9 +54,7 @@ public class HasHealth : MonoBehaviour {
 	{
 		Color[] pix = new Color[width * height];
 		for( int i = 0; i < pix.Length; ++i )
-		{
 			pix[ i ] = col;
-		}
 		Texture2D result = new Texture2D( width, height );
 		result.SetPixels( pix );
 		result.Apply();
@@ -69,8 +73,14 @@ public class HasHealth : MonoBehaviour {
 	{	if (!dead () && !force)
 			return;
 		Debug.Log ("Destroying " + ToString());
-		if (spawnNext != null)
-		{	Instantiate(spawnNext);
+		if (doCallOnDie)
+		{	callOnDie ();
+		} else if (spawnNext != null)
+		{	HasHealth H = Instantiate(spawnNext) as HasHealth;
+			//if(doCallOnDie)
+			//{	H.doCallOnDie = doCallOnDie;
+			//	H.callOnDie = callOnDie;
+			//}
 		} else if (isBoss)
 		{	Application.LoadLevel (Application.loadedLevel + 1);
 		}
