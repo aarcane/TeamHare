@@ -29,7 +29,7 @@ public class Jump : MonoBehaviour
 		// This can be changed in the Inspector window
 		public int defaultJumpForce = 900;
 		Vector2 jumpForce;
-	public static Jump instance;
+		public static Jump instance;
 		void Start ()
 		{	instance = this;
 				DontDestroyOnLoad (gameObject);
