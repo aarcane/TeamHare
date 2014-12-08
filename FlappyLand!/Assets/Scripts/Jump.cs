@@ -4,7 +4,6 @@ using System.Collections;
 public class Jump : MonoBehaviour
 {
 		public GameObject fog;
-
 		//Decrease score by 50
 		public int cheapRockets;
 		public int spreadRockets;
@@ -170,6 +169,8 @@ public class Jump : MonoBehaviour
 				} else if (other.gameObject.tag == "GravityItem") {
 						gravityItem += 700;
 						setJumpForce (Random.Range (375, 550));
+						Destroy (other.gameObject);
+				}else if (other.gameObject.tag == "crab") {
 						Destroy (other.gameObject);
 				}
 				if (other.gameObject.tag == "obstacle")
