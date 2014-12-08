@@ -38,7 +38,7 @@ public class InfiniteGameOver : MonoBehaviour
 
 		IEnumerator exit ()
 		{
-				yield return new WaitForSeconds (5);
+				yield return new WaitForSeconds (3);
 				Jump.instance.score = 0;
 				Jump.instance.bestScore = bestScore;
 				//Time.timeScale = oldTimeScale;

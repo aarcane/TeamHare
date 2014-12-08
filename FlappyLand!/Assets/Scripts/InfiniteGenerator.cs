@@ -16,7 +16,7 @@ public class InfiniteGenerator : MonoBehaviour
 	public float maximumFadeTime = 3f;
 	public float fadeStep = 0.1f;
 
-	int spawnBossTargetScore;
+	public int spawnBossTargetScore;
 
 	bool bossSpawned = false;
 
@@ -43,7 +43,7 @@ public class InfiniteGenerator : MonoBehaviour
 	public void bossDied()
 	{	bossSpawned = false;
 		makeHarder ();
-		spawnBossTargetScore += spawnBossThreshold;
+		spawnBossTargetScore = J.score + 1000;
 	}
 	void makeHarder ()
 	{	int backgroundCycleTime = BackgroundChangable.instance.CycleTime;
@@ -56,7 +56,6 @@ public class InfiniteGenerator : MonoBehaviour
 		{	backgroundCycleDuration += fadeStep;
 			BackgroundChangable.instance.fadeTime = backgroundCycleDuration;
 		}
-		spawnBossThreshold += 100;
 	}
 	void CreateRandomItem ()
 	{	if (!spawnItems)
