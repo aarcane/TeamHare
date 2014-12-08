@@ -18,9 +18,7 @@ public class GeneratePipes : MonoBehaviour
 		{
 				J = GameObject.FindGameObjectWithTag ("Player").GetComponent<Jump> (); 
 				if (spawnPipes)
-				if (Application.loadedLevel != 6) {
 						InvokeRepeating ("CreateObstacle", 1f, 4f);
-				}
 				if (spawnItems)
 						InvokeRepeating ("CreateRandomItem", 1f, 6f);
 		}
