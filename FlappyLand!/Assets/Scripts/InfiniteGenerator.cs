@@ -24,6 +24,7 @@ public class InfiniteGenerator : MonoBehaviour
 
 	void Start ()
 	{	J = GameObject.FindGameObjectWithTag ("Player").GetComponent<Jump> ();
+		J.isInfiniteMode = true;
 		spawnBossTargetScore = spawnBossThreshold;
 		InvokeRepeating ("CreateObstacle", 1f, 4f);
 		InvokeRepeating("CreateRandomItem", 1f, 6f);

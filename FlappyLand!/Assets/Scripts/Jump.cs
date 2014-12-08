@@ -12,6 +12,7 @@ public class Jump : MonoBehaviour
 		public int gravityItem;
 //		public int itemDuration;
 		public bool hasBubbleShield = false;
+		public bool isInfiniteMode = false;
 //		public bool hasSuperSpreadRocket = false;
 //		public bool hasGravityItem = false;
 		public int textDuration = 0;
