@@ -6,7 +6,7 @@ using Menu;
 public class MenuPause : MonoBehaviour
 {	Stack <Menu.Menu> Menus;
 	bool showGui = false;
-	void Start ()
+	void Awake ()
 	{	Menus = new Stack<Menu.Menu> ();
 		Menus.Push(new Menu.Menu());
 		List<MenuBase> menuMain = Menus.Peek ().M;
@@ -40,9 +40,11 @@ public class MenuPause : MonoBehaviour
 		if (showGui)
 		{	savedTimeScale = Time.timeScale;
 			Time.timeScale = 0f;
+			//Jump.instance.gameObject.SetActive(false);
 		}
 		else
-		{	Time.timeScale = savedTimeScale;	
+		{	Time.timeScale = savedTimeScale;
+			//Jump.instance.gameObject.SetActive(true);
 		}
 	}
 

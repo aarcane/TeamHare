@@ -7,12 +7,13 @@ using Menu;
 public class MenuMain : MonoBehaviour
 {	Stack <Menu.Menu> Menus;
 	void Start ()
-	{	Menus = new Stack<Menu.Menu> ();
+	{	Jump.instance.gameObject.SetActive (false);
+		Menus = new Stack<Menu.Menu> ();
 		Menus.Push(new Menu.Menu());
 		List<MenuBase> menuMain = Menus.Peek ().M;
 		Menu.Menu MenuSettings = new Menu.Menu ();
 		List<MenuBase> menuSettings = MenuSettings.M;
-
+		//Time.timeScale = 0f;
 		/***
 		 * Add Main Menu items
 		 */
@@ -20,18 +21,38 @@ public class MenuMain : MonoBehaviour
 		menuMain.Add(
 			new MenuItem (
 				"Play FlappyLand!",
-				() => {	Application.LoadLevel(1);
+				() => {	LoadLevel(1);
+						
 		}));
-		menuMain.Add( new MenuItem ( "Play Infinite Mode" ) );
+		menuMain.Add(
+			new MenuItem ( 
+				"Play Infinite Mode",
+				() => {	LoadLevel ("InfiniteMode");
+		}));
 		menuMain.Add(
 			new MenuItem (
 				"Play Level 2",
-				() => {	Application.LoadLevel(2);
+				() => {	LoadLevel(2);
 		}));
 		menuMain.Add(
 			new MenuItem (
 				"Play Level 3",
-				() => {	Application.LoadLevel(3);
+				() => {	LoadLevel(3);
+		}));
+		menuMain.Add(
+			new MenuItem (
+				"Play Beach Level",
+				() => {	LoadLevel(5);
+		}));
+		menuMain.Add(
+			new MenuItem (
+				"Play Final Level",
+				() => {	LoadLevel(6);
+		}));
+		menuMain.Add(
+			new MenuItem (
+				"Play Plains Level",
+				() => {	LoadLevel(4);
 		}));
 		menuMain.Add(
 			new MenuSub (
@@ -55,7 +76,14 @@ public class MenuMain : MonoBehaviour
 		if (Input.GetKeyUp ("down"))
 			Menus.Peek().Next (false);
 	}
-
+	void LoadLevel(int levelNum)
+	{	Jump.instance.gameObject.SetActive (true);
+		Application.LoadLevel (levelNum);
+	}
+	void LoadLevel(String levelName)
+	{	Jump.instance.gameObject.SetActive (true);
+		Application.LoadLevel (levelName);
+	}
 	void OnGUI()
 	{	int X = Screen.width / 2 - 50;
 		int Y = Screen.height / 2 - 10;
