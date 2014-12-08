@@ -9,7 +9,7 @@ public class PipeObstacle : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		rigidbody2D.velocity = velocity * Random.value;
+		rigidbody2D.velocity = velocity * Random.Range (0.4f, 1.0f);
 		transform.position = new Vector3(transform.position.x + rangeX * Random.value , transform.position.y - rangeY * Random.value, transform.position.z);
 		Destroy(gameObject, 80);
 	}
