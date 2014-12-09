@@ -4,6 +4,9 @@ using System.Collections;
 public class BulletScript : MonoBehaviour
 {
 	public float maxDistance;
+	public int damage = 100;
+	public float damageMinPct = 50;
+	public float damageMaxPct = 150;
 	float distanceTravelled = 0;
 	Vector3 lastPosition;
 	
@@ -23,7 +26,8 @@ public class BulletScript : MonoBehaviour
 			return;
 		HasHealth otherHealth = other.GetComponent<HasHealth> ();
 		if (otherHealth != null)
-		{	otherHealth.adjustHealth (-100);
+		{	int dmg = (damage * Random.Range(damageMinPct, damageMaxPct));
+			otherHealth.adjustHealth (dmg);
 			Destroy (this.gameObject);
 		} else
 		{	Debug.Log ("Unknown Object: " + other.ToString());
