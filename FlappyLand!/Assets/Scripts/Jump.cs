@@ -56,12 +56,12 @@ public class Jump : MonoBehaviour
 				++score;
 
 
-				if (cheapRockets > 0)
-						--cheapRockets;
-				if (spreadRockets > 0)
-						--spreadRockets;
-				if (superSpreadRockets > 0)
-						--superSpreadRockets;
+				//if (cheapRockets > 0)
+				//		--cheapRockets;
+				//if (spreadRockets > 0)
+				//		--spreadRockets;
+				//if (superSpreadRockets > 0)
+				//		--superSpreadRockets;
 				if (gravityItem > 0) {
 						--gravityItem;
 						if (gravityItem <= 0) {
@@ -82,19 +82,19 @@ public class Jump : MonoBehaviour
 				
 				// Fire various rockets!
 				if (Input.GetButtonDown ("Fire1")) {
-						if (CanLaunchRocket ()) {
+						if (CanLaunchRocket ( ref score, 500)) {
 								shootRocket (transform.position);
 						}
 				}
 				if (Input.GetButtonDown ("Fire2")) {
-						if (spreadRockets > 0 && CanLaunchRocket ()) {
+						if (CanLaunchRocket (ref spreadRockets)) {
 								shootRocket (transform.position, 20);
 								shootRocket (transform.position);
 								shootRocket (transform.position, -20);
 						}
 				}
 				if (Input.GetButtonDown ("Fire3")) {
-						if (superSpreadRockets > 0 && CanLaunchRocket ()) {
+						if (CanLaunchRocket (ref superSpreadRockets)) {
 								Vector3[] origins = new Vector3[4];
 								int i = 0;
 								origins [i++] = transform.position + new Vector3 (0f, 1.8f, 0f);
@@ -193,13 +193,13 @@ public class Jump : MonoBehaviour
 		{		hasBubbleShield = false;
 		}
 
-		bool CanLaunchRocket ()
+		bool CanLaunchRocket (ref int rocketInventory, int cost = 1)
 		{		bool fire = false;
-				if (cheapRockets > 0 && score >= 50) {
-						score -= 50;
+				if (cheapRockets > 0) {
+						--cheapRockets;
 						fire = true;
-				} else if (score >= 500) {
-						score -= 500;
+				} else if (rocketInventory > 0) {
+						rocketInventory -= cost;
 						fire = true;
 				}
 				return fire;
