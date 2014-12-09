@@ -26,7 +26,7 @@ public class BulletScript : MonoBehaviour
 			return;
 		HasHealth otherHealth = other.GetComponent<HasHealth> ();
 		if (otherHealth != null)
-		{	int dmg = (damage * Random.Range(damageMinPct, damageMaxPct));
+		{	int dmg = (int)(damage * Random.Range(damageMinPct, damageMaxPct));
 			otherHealth.adjustHealth (dmg);
 			Destroy (this.gameObject);
 		} else
