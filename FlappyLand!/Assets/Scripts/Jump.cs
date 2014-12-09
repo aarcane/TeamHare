@@ -56,12 +56,7 @@ public class Jump : MonoBehaviour
 				++score;
 
 
-				//if (cheapRockets > 0)
-				//		--cheapRockets;
-				//if (spreadRockets > 0)
-				//		--spreadRockets;
-				//if (superSpreadRockets > 0)
-				//		--superSpreadRockets;
+
 				if (gravityItem > 0) {
 						--gravityItem;
 						if (gravityItem <= 0) {
@@ -87,14 +82,14 @@ public class Jump : MonoBehaviour
 						}
 				}
 				if (Input.GetButtonDown ("Fire2")) {
-						if (CanLaunchRocket (ref spreadRockets)) {
+						if (spreadRockets > 0 && CanLaunchRocket (ref spreadRockets)) {
 								shootRocket (transform.position, 20);
 								shootRocket (transform.position);
 								shootRocket (transform.position, -20);
 						}
 				}
 				if (Input.GetButtonDown ("Fire3")) {
-						if (CanLaunchRocket (ref superSpreadRockets)) {
+						if (superSpreadRockets > 0 && CanLaunchRocket (ref superSpreadRockets)) {
 								Vector3[] origins = new Vector3[4];
 								int i = 0;
 								origins [i++] = transform.position + new Vector3 (0f, 1.8f, 0f);
@@ -130,16 +125,16 @@ public class Jump : MonoBehaviour
 				GUI.Label (new Rect (10, 10, 400, 30), "Score: " + score + " SpreadRockets: " + spreadRockets + " cheapRockets: " + cheapRockets, myStyle);
 
 				if (gravityItem > 0) {
-						GUI.Label (new Rect (200, 40, 400, 30), "DAMN! FUCKIN' GRAVITY, BRO!", myStyle);
+						GUI.Label (new Rect (200, 40, 400, 30), "DAMN! FUCKIN' GRAVITY, BRO! (" + gravityItem + ")", myStyle);
 				}
 				if (spreadRockets > 0) {
-						GUI.Label (new Rect (200, 70, 400, 30), "SPREAD ROCKETS, BABY!", myStyle);
+						GUI.Label (new Rect (200, 70, 400, 30), "SPREAD ROCKETS, BABY! (" + spreadRockets + ")", myStyle);
 				}
 				if (superSpreadRockets > 0) {
-						GUI.Label (new Rect (200, 100, 400, 30), "HOLY SHIT SUPER ROCKETS, DUDE!", myStyle);
+						GUI.Label (new Rect (200, 100, 400, 30), "HOLY SHIT SUPER ROCKETS, DUDE! (" + superSpreadRockets + ")", myStyle);
 				}
 				if (cheapRockets > 0) {
-						GUI.Label (new Rect (200, 130, 400, 30), "CHEAP ASS ROCKETS, SON!", myStyle);
+						GUI.Label (new Rect (200, 130, 400, 30), "CHEAP ASS ROCKETS, SON! (" + cheapRockets + ")", myStyle);
 				}
 				if (textDuration > 0 && hasBubbleShield) {
 						GUI.Label (new Rect (200, 160, 400, 30), "SICK! STRONG BUBBLE SHIELD, BUDDY!", myStyle);
