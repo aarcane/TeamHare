@@ -6,12 +6,14 @@ using Menu;
 public class MenuPause : MonoBehaviour
 {	Stack <Menu.Menu> Menus;
 	bool showGui = false;
+	Jump J;
 	void Awake ()
-	{	Menus = new Stack<Menu.Menu> ();
+	{	J = Jump.instance;
+		Menus = new Stack<Menu.Menu> ();
 		Menus.Push(new Menu.Menu());
 		List<MenuBase> menuMain = Menus.Peek ().M;
-		Menu.Menu MenuSettings = new Menu.Menu ();
-		List<MenuBase> menuSettings = MenuSettings.M;
+		Menu.Menu MenuCheat = new Menu.Menu ();
+		List<MenuBase> menuCheat = MenuCheat.M;
 
 		menuMain.Add (
 			new MenuItem (
@@ -20,18 +22,36 @@ public class MenuPause : MonoBehaviour
 		}));
 		menuMain.Add (
 			new MenuSub (
-				"Settings",
-				MenuSettings
+				"Cheats",
+				MenuCheat
 		));
 		menuMain.Add ( new MenuQuit() );
 
 		/***
 		 * Add Settings subMenu items
 		 */
-		menuSettings.Add ( new MenuItem ( "Screen Resolution" ) );
-		menuSettings.Add ( new MenuItem ( "Music Volume" ) );
-		menuSettings.Add ( new MenuItem ( "SFX Volume" ) );
-		menuSettings.Add ( new MenuPrev () );
+		menuCheat.Add (
+			new MenuItem (
+				"Score",
+				() => { J.score += 1000; 
+		}));
+		menuCheat.Add (
+			new MenuItem (
+				"Cheap",
+				() => { J.cheapRockets += 1000; 
+		}));
+		menuCheat.Add (
+			new MenuItem (
+				"Spread",
+				() => { J.spreadRockets += 1000; 
+		}));
+		menuCheat.Add (
+			new MenuItem (
+				"Super",
+				() => { J.superSpreadRockets += 1000; 
+		}));
+
+		menuCheat.Add ( new MenuPrev () );
 	}
 
 	float savedTimeScale;
