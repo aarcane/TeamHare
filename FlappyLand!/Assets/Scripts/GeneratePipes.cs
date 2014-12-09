@@ -8,6 +8,8 @@ public class GeneratePipes : MonoBehaviour
 		public GameObject surpriseItem;
 		public GameObject moneyBags;
 		public GameObject spawnBoss;
+		public GameObject[] spawnEnemies;
+		public float spawnEnemiesTime;
 		public int spawnBossThreshold = 2000;
 		public bool spawnPipes = true;
 		public bool spawnItems = true;
@@ -21,6 +23,8 @@ public class GeneratePipes : MonoBehaviour
 						InvokeRepeating ("CreateObstacle", 1f, 4f);
 				if (spawnItems)
 						InvokeRepeating ("CreateRandomItem", 1f, 6f);
+				if(spawnEnemiesTime > 0 && spawnEnemies.Length > 0)
+					InvokeRepeating ("CreateRandomEnemy", 1f, spawnEnemiesTime);
 		}
 
 		void Update ()
@@ -52,7 +56,10 @@ public class GeneratePipes : MonoBehaviour
 						CreateMoneyItem ();
 				}
 		}
-	
+		void CreateRandomEnemy ()
+		{	int sp = Random.Range (0, spawnEnemies.Length);
+			GameObject spawn = Instantiate(spawnEnemies[sp]) as GameObject;
+		}
 		void CreateObstacle ()
 		{
 				pipes.tag = "obstacle";

@@ -21,12 +21,12 @@ public class Crabby : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D (Collider2D other)
-	{
-		if (other.gameObject.tag == "CheapAssRockets") {
-			Destroy (gameObject);
-		} else if (other.gameObject.tag == "SpreadRocketItem") {
-			Destroy (gameObject);
-		} 
-	}
+//	void OnCollisionEnter2D (Collider2D other)
+//	{
+//		if (other.gameObject.tag == "CheapAssRockets") {
+//			Destroy (gameObject);
+//		} else if (other.gameObject.tag == "SpreadRocketItem") {
+//			Destroy (gameObject);
+//		} 
+//	}
 }
