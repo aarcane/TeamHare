@@ -44,9 +44,9 @@ public class InfiniteGameOver : MonoBehaviour
 				//Time.timeScale = oldTimeScale;
 				Jump.instance.gameObject.SetActive (true);
 				if (GameObject.FindGameObjectWithTag ("Player").GetComponent<Jump> ().isInfiniteMode) {
-						Application.LoadLevel (10);
+						Application.LoadLevel ("MainMenu2");
 				} else {
-						Application.LoadLevel (1);
+						Application.LoadLevel ("MainMenu2");
 				}
 		}
 }
