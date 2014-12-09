@@ -32,27 +32,27 @@ public class MenuMain : MonoBehaviour
 		menuMain.Add(
 			new MenuItem (
 				"Play Level 2",
-				() => {	LoadLevel(2);
+				() => {	LoadLevel(4);
 		}));
 		menuMain.Add(
 			new MenuItem (
 				"Play Level 3",
-				() => {	LoadLevel(3);
-		}));
-		menuMain.Add(
-			new MenuItem (
-				"Play Beach Level",
-				() => {	LoadLevel(5);
-		}));
-		menuMain.Add(
-			new MenuItem (
-				"Play Final Level",
 				() => {	LoadLevel(6);
 		}));
 		menuMain.Add(
 			new MenuItem (
-				"Play Plains Level",
-				() => {	LoadLevel(4);
+				"Play Level 4",
+				() => {	LoadLevel(8);
+		}));
+		menuMain.Add(
+			new MenuItem (
+				"Play Level 5",
+				() => {	LoadLevel(10);
+		}));
+		menuMain.Add(
+			new MenuItem (
+				"Play Final Level",
+				() => {	LoadLevel(12);
 		}));
 		menuMain.Add(
 			new MenuSub (
