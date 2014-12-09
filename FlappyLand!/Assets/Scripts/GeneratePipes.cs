@@ -11,6 +11,7 @@ public class GeneratePipes : MonoBehaviour
 		public GameObject[] spawnEnemies;
 		public float spawnEnemiesTime;
 		public int spawnBossThreshold = 2000;
+		public int spawnBossTargetScore;
 		public bool spawnPipes = true;
 		public bool spawnItems = true;
 		bool bossSpawned = false;
@@ -19,17 +20,18 @@ public class GeneratePipes : MonoBehaviour
 		void Start ()
 		{
 				J = GameObject.FindGameObjectWithTag ("Player").GetComponent<Jump> (); 
+				spawnBossTargetScore = J.score + spawnBossThreshold;
 				if (spawnPipes)
 						InvokeRepeating ("CreateObstacle", 1f, 4f);
 				if (spawnItems)
 						InvokeRepeating ("CreateRandomItem", 1f, 6f);
-				if(spawnEnemiesTime > 0 && spawnEnemies.Length > 0)
-					InvokeRepeating ("CreateRandomEnemy", 1f, spawnEnemiesTime);
+				if (spawnEnemiesTime > 0 && spawnEnemies.Length > 0)
+						InvokeRepeating ("CreateRandomEnemy", 1f, spawnEnemiesTime);
 		}
 
 		void Update ()
 		{
-				if (J.score > spawnBossThreshold && !bossSpawned) {
+				if (J.score > spawnBossTargetScore && !bossSpawned) {
 						Debug.Log ("Spawning Boss: " + spawnBoss.ToString ());
 						Instantiate (spawnBoss);
 						bossSpawned = true;
@@ -56,10 +58,13 @@ public class GeneratePipes : MonoBehaviour
 						CreateMoneyItem ();
 				}
 		}
+
 		void CreateRandomEnemy ()
-		{	int sp = Random.Range (0, spawnEnemies.Length);
-			GameObject spawn = Instantiate(spawnEnemies[sp]) as GameObject;
+		{
+				int sp = Random.Range (0, spawnEnemies.Length);
+				GameObject spawn = Instantiate (spawnEnemies [sp]) as GameObject;
 		}
+
 		void CreateObstacle ()
 		{
 				pipes.tag = "obstacle";
