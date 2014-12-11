@@ -165,10 +165,7 @@ public class Jump : MonoBehaviour
 						gravityItem += 700;
 						setJumpForce (Random.Range (375, 550));
 						Destroy (other.gameObject);
-				}else if (other.gameObject.tag == "crab") {
-						Destroy (other.gameObject);
-				}
-				if (other.gameObject.tag == "obstacle")
+				}else if (other.gameObject.tag == "obstacle")
 						Die ();
 		}
 
