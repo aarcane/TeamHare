@@ -31,6 +31,11 @@ public class MenuMain : MonoBehaviour
 		}));
 		menuMain.Add(
 			new MenuItem (
+			"Play Level 1",
+			() => {	LoadLevel(2);
+		}));
+		menuMain.Add(
+			new MenuItem (
 				"Play Level 2",
 				() => {	LoadLevel(4);
 		}));
