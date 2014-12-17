@@ -19,7 +19,7 @@ public class HasHealth : MonoBehaviour {
 	void Update() {}
 
 	void Start () {
-		healthBarLength = Screen.width/3;
+		healthBarLength = Screen.width/4;
 		currentHealth = health;
 	}
 
@@ -31,8 +31,8 @@ public class HasHealth : MonoBehaviour {
 		InitStyles ();
 		if (currentHealth >= 0) {
 			float healthPercent = (float)currentHealth / (float)health;
-			Rect currentHealthBar = new Rect (700, 10, healthBarLength * healthPercent, 20);
-			Rect fullHealthBar = new Rect (700, 10, healthBarLength, 20); 
+			Rect currentHealthBar = new Rect (950, 15, healthBarLength * healthPercent, 20);
+			Rect fullHealthBar = new Rect (950, 15, healthBarLength, 20); 
 			//GUI.Box (new Rect(699, 9, healthBarLength+2, 22), string.Empty);
 			//GUI.Box (new Rect (700, 10, healthBarLength, 20), "<color=black><size=12> <b>" + currentHealth + "</b> /" + health + "</size></color>", healthStyle);
 			GUI.Box (fullHealthBar, "" + currentHealth + " / " + health + "", healthBoxStyle);
