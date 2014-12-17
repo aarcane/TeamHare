@@ -30,10 +30,12 @@ public class Jump : MonoBehaviour
 		public int defaultJumpForce = 900;
 		Vector2 jumpForce;
 		public static Jump instance;
+
 		void Start ()
-		{	instance = this;
+		{
+				instance = this;
 				DontDestroyOnLoad (gameObject);
-			this.gameObject.SetActive (false);
+				this.gameObject.SetActive (false);
 		}
 
 		void OnLevelWasLoaded (int level)
@@ -48,7 +50,8 @@ public class Jump : MonoBehaviour
 
 		// Update is called once per frame
 		void Update ()
-		{		if (Application.loadedLevel == 0)
+		{
+				if (Application.loadedLevel == 0)
 						return;
 				if (Time.timeScale == 0f)
 						return;	
@@ -62,7 +65,8 @@ public class Jump : MonoBehaviour
 						if (gravityItem <= 0) {
 								gravityItem = 0;
 								setJumpForce (defaultJumpForce);
-				}		}
+						}
+				}
 
 				if (hasBubbleShield) {
 						Transform bubbleShieldItem = Instantiate (BubbleShield) as Transform;
@@ -77,7 +81,7 @@ public class Jump : MonoBehaviour
 				
 				// Fire various rockets!
 				if (Input.GetButtonDown ("Fire1")) {
-						if (CanLaunchRocket ( ref score, 500)) {
+						if (CanLaunchRocket (ref score, 500)) {
 								shootRocket (transform.position);
 						}
 				}
@@ -95,13 +99,16 @@ public class Jump : MonoBehaviour
 								origins [i++] = transform.position + new Vector3 (0f, 1.8f, 0f);
 								origins [i++] = transform.position + new Vector3 (0f, 0.9f, 0f);
 								origins [i++] = transform.position - new Vector3 (0f, 0.9f, 0f);
-								origins [i++] = transform.position - new Vector3 (0f, 1.8f, 0f);;
+								origins [i++] = transform.position - new Vector3 (0f, 1.8f, 0f);
+								;
 								
 								foreach (Vector3 o in origins) {
 										shootRocket (o, 20);
 										shootRocket (o);
 										shootRocket (o, -20);
-				}		}		}
+								}
+						}
+				}
 
 
 				Vector2 screenPosition = Camera.main.WorldToScreenPoint (transform.position);
@@ -111,18 +118,20 @@ public class Jump : MonoBehaviour
 		}
 
 		void shootRocket (Vector3 origin, float angle = 0, int speed = 800)
-		{		Transform shot;
+		{
+				Transform shot;
 				shot = Instantiate (shotPrefab, origin, Quaternion.Euler (0f, 30f, angle)) as Transform;
 				shot.rigidbody2D.AddForce (new Vector2 (Mathf.Cos (Mathf.Deg2Rad * angle), Mathf.Sin (Mathf.Deg2Rad * angle)) * speed);
 		}
 
 		void OnGUI ()
-		{		if (Application.loadedLevel == 0)
+		{
+				if (Application.loadedLevel == 0)
 						return;
 				GUIStyle myStyle = new GUIStyle ();
 				myStyle.fontSize = 25;
 				myStyle.normal.textColor = Color.white;
-				GUI.Label (new Rect (10, 10, 400, 30), "Score: " + score + " SpreadRockets: " + spreadRockets + " cheapRockets: " + cheapRockets, myStyle);
+				GUI.Label (new Rect (10, 10, 400, 30), "Score: " + score + " Spread Rockets: " + spreadRockets + " Cheap Rockets: " + cheapRockets + " Super Ass Rockets: " + superSpreadRockets, myStyle);
 
 				if (gravityItem > 0) {
 						GUI.Label (new Rect (200, 40, 400, 30), "DAMN! FUCKIN' GRAVITY, BRO! (" + gravityItem + ")", myStyle);
@@ -138,10 +147,12 @@ public class Jump : MonoBehaviour
 				}
 				if (textDuration > 0 && hasBubbleShield) {
 						GUI.Label (new Rect (200, 160, 400, 30), "SICK! STRONG BUBBLE SHIELD, BUDDY!", myStyle);
-		}		}
+				}
+		}
 
 		void OnTriggerEnter2D (Collider2D other)
-		{		if (other.gameObject.tag == "CheapAssRockets") {
+		{
+				if (other.gameObject.tag == "CheapAssRockets") {
 						cheapRockets += 700;
 						Destroy (other.gameObject);
 				} else if (other.gameObject.tag == "SpreadRocketItem") {
@@ -165,28 +176,33 @@ public class Jump : MonoBehaviour
 						gravityItem += 700;
 						setJumpForce (Random.Range (375, 550));
 						Destroy (other.gameObject);
-				}else if (other.gameObject.tag == "obstacle")
+				} else if (other.gameObject.tag == "obstacle")
 						Die ();
 		}
 
 		void OnCollisionEnter2D (Collision2D other)
-		{		Die ();
+		{
+				Die ();
 		}
 
 		public void Die ()
-		{		Application.LoadLevel ("InfiniteGameOver");
+		{
+				Application.LoadLevel ("InfiniteGameOver");
 		}
 
 		public void setJumpForce (int newforce)
-		{		jumpForce = new Vector2 (0, newforce);
+		{
+				jumpForce = new Vector2 (0, newforce);
 		}
 
 		public void disableBubbleShield ()
-		{		hasBubbleShield = false;
+		{
+				hasBubbleShield = false;
 		}
 
 		bool CanLaunchRocket (ref int rocketInventory, int cost = 1)
-		{		bool fire = false;
+		{
+				bool fire = false;
 				if (cheapRockets > 0) {
 						--cheapRockets;
 						fire = true;
@@ -195,4 +211,5 @@ public class Jump : MonoBehaviour
 						fire = true;
 				}
 				return fire;
-}		}
+		}
+}
