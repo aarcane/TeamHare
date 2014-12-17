@@ -13,7 +13,6 @@ public class Horsey : MonoBehaviour {
 		tmp = transform.position;
 		float y = Random.Range (1.0f, 3.1f);
 		int posOrNeg = Random.Range (0, 2);
-		print (posOrNeg);
 		if (posOrNeg == 0) {
 			tmp.y = y;
 		} else {
